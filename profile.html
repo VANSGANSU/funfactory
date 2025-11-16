@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Fun Factory</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #0f3854, #1a7a73, #6ee7b7);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+    }
+
+    h2 {
+      margin: 0.5rem 0;
+    }
+
+    p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    a, button {
+      margin-top: 1rem;
+      color: #fff;
+      text-decoration: none;
+      background: #10b981;
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      display: inline-block;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    a:hover, button:hover {
+      background: #059669;
+      transform: scale(1.05);
+    }
+
+    .btn-group {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="punpun nescafe.jpg" alt="User Profile">
+    <h2>John Doe</h2>
+    <p>Email: Punpun@Gmail.com</p>
+
+    <div class="btn-group">
+      <a href="index.html">← Back to Home</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    // Fungsi Logout
+    function logout() {
+      // Contoh: hapus data login di localStorage/sessionStorage
+      localStorage.removeItem('loggedInUser');
+      sessionStorage.removeItem('loggedInUser');
+
+      // Tampilkan konfirmasi logout (opsional)
+      alert("You have been logged out.");
+
+      // Arahkan kembali ke halaman login
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
