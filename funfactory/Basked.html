@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Fun Factory</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEFA;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    header {
+      background: #A7D8F5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 110px;
+      height: 50px;
+    }
+
+    .logo h2 {
+      font-size: 20px;
+      margin: 0;
+      color: #004F7A;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 20px;
+      width: 300px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 5px;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 20px;
+    }
+
+    /* Main */
+    main {
+      background: #fff;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 900px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .back {
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      margin: 0 0 20px 0;
+      color: #004F7A;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 10px;
+    }
+
+    th {
+      background: #e8f5ff;
+    }
+
+    .action-btn {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 18px;
+      margin: 0 5px;
+    }
+
+    .action-btn.delete { color: red; }
+    .action-btn.confirm { color: green; }
+    .checkbox { transform: scale(1.2); }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quantity-control button {
+      background: #ff5722;
+      border: none;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quantity-control button:hover {
+      background: #e64a19;
+    }
+
+    /* Summary table */
+    .summary-table th, .summary-table td {
+      border: none;
+      padding: 8px;
+    }
+
+    .summary-table {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .summary-table td {
+      font-weight: bold;
+      color: #004F7A;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="media/download (3).png" alt="Fun Factory Logo">
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search ...">
+      
+    </div>
+
+    <div class="icons">
+      <img src="media/download (2).png" 
+       alt="Cart Icon" width="30px">
+      <img src="media/v.png" alt="User Icon" width="30px">
+      
+    </div>
+</header>
+
+  <main>
+    <a href="#" class="back">&lt; Back</a>
+    <h3>Cart</h3>
+
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Product Name</th>
+          <th>Location</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>...</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body">
+        <tr data-price="5000">
+          <td>1.</td>
+          <td>Cute Stiker</td>
+          <td>Jl. Depo, Kab Bintang, Kec Subur</td>
+          <td class="price">Rp 5.000</td>
+          <td>
+            <div class="quantity-control">
+              <button class="minus">−</button>
+              <span class="qty">1</span>
+              <button class="plus">+</button>
+            </div>
+          </td>
+          <td>
+            <input type="checkbox" class="checkbox">
+            <button class="action-btn delete">❌</button>
+            <button class="action-btn confirm">✔️</button>
+          </td>
+        </tr>
+
+        <tr data-price="12000">
+          <td>2.</td>
+          <td>Gantungan Kunci</td>
+          <td>Jl. Mawar No.4, Kec Indah</td>
+          <td class="price">Rp 12.000</td>
+          <td>
+            <div class="quantity-control">
+              <button class="minus">−</button>
+              <span class="qty">1</span>
+              <button class="plus">+</button>
+            </div>
+          </td>
+          <td>
+            <input type="checkbox" class="checkbox">
+            <button class="action-btn delete">❌</button>
+            <button class="action-btn confirm">✔️</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Tabel Ringkasan -->
+    <table class="summary-table">
+      <tr>
+        <th>Total Barang Dibeli:</th>
+        <td id="total-items">0</td>
+      </tr>
+      <tr>
+        <th>Total Harga:</th>
+        <td id="total-price">Rp 0</td>
+      </tr>
+    </table>
+  </main>
+
+  <script>
+    const cartBody = document.getElementById("cart-body");
+    const totalItemsEl = document.getElementById("total-items");
+    const totalPriceEl = document.getElementById("total-price");
+
+    // Update total harga & jumlah
+    function updateSummary() {
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      const rows = cartBody.querySelectorAll("tr");
+      rows.forEach(row => {
+        const checkbox = row.querySelector(".checkbox");
+        const qty = parseInt(row.querySelector(".qty").textContent);
+        const price = parseInt(row.dataset.price);
+
+        if (checkbox.checked) {
+          totalItems += qty;
+          totalPrice += price * qty;
+        }
+      });
+
+      totalItemsEl.textContent = totalItems;
+      totalPriceEl.textContent = "Rp " + totalPrice.toLocaleString("id-ID");
+    }
+
+    // Tombol tambah & kurang
+    cartBody.querySelectorAll(".plus").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const qtyEl = btn.parentElement.querySelector(".qty");
+        let qty = parseInt(qtyEl.textContent);
+        qty++;
+        qtyEl.textContent = qty;
+        updateSummary();
+      });
+    });
+
+    cartBody.querySelectorAll(".minus").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const qtyEl = btn.parentElement.querySelector(".qty");
+        let qty = parseInt(qtyEl.textContent);
+        if (qty > 1) qty--;
+        qtyEl.textContent = qty;
+        updateSummary();
+      });
+    });
+
+    // Checkbox
+    cartBody.querySelectorAll(".checkbox").forEach(cb => {
+      cb.addEventListener("change", updateSummary);
+    });
+
+    // Hapus baris
+    cartBody.querySelectorAll(".delete").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.closest("tr").remove();
+        updateSummary();
+      });
+    });
+
+    // Konfirmasi pembelian (ubah warna)
+    cartBody.querySelectorAll(".confirm").forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.closest("tr").style.background = "#d4edda";
+      });
+    });
+  </script>
+
+</body>
+</html>
