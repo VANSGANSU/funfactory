@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fun Factory - Product Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* 🌈 Background gradasi: gelap di atas, terang di bawah */
+    body {
+      background: linear-gradient(to bottom, #104c7a, #3ea3b8, #b6eef5);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px 50px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo h1 {
+      font-size: 20px;
+      color: #0a3b59;
+      text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.4);
+    }
+
+    .search-bar input {
+      width: 250px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    .search-bar input:focus {
+      box-shadow: 0 0 8px rgba(79, 181, 198, 0.8);
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-img {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      filter: brightness(0) invert(1);
+    }
+
+    .icon-img:hover {
+      transform: scale(1.1);
+    }
+
+    a.back-link {
+      align-self: flex-start;
+      margin: 30px 0 -10px 70px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 🌟 Kotak produk dengan efek glow */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(100, 232, 156, 0.6), 0 0 40px rgba(255, 255, 255, 0.2);
+      width: 80%;
+      padding: 30px;
+      margin-top: 20px;
+      gap: 40px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 35px rgba(100, 232, 156, 0.8), 0 0 50px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Kiri: gambar dan tombol */
+    .product-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .product-area img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .product-area img:hover {
+      transform: scale(1.05);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .product-area button {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .product-area button:hover {
+      transform: scale(1.05);
+    }
+
+    .add-btn {
+      background-color: #e5e5e5;
+      color: #000;
+    }
+
+    .add-btn:hover {
+      background-color: #d1d1d1;
+    }
+
+    .buy-btn {
+      background-color: #64e89c;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .buy-btn:hover {
+      background-color: #4ac47f;
+    }
+
+    /* Kanan: info produk */
+    .info-area {
+      flex: 1;
+      color: #0a3b59;
+    }
+
+    .info-area h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .info-area p.desc {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .info-area .price {
+      font-size: 20px;
+      color: #00a86b;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .info-area hr {
+      border: none;
+      height: 2px;
+      background-color: #aee1f8;
+      margin: 15px 0;
+    }
+
+    .info-area h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .info-area p.info {
+      font-size: 14px;
+      color: #2e4e4f;
+      line-height: 1.6;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #64e89c;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: fadeInOut 2s;
+    }
+
+    @keyframes fadeInOut {
+      0% {opacity: 0;}
+      10%, 90% {opacity: 1;}
+      100% {opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="download (3).png" alt="Logo" />
+    </div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search ..." />
+    </div>
+
+    <div class="icons">
+      <a href="cart.html"><img src="download (2).png" alt="Cart" class="icon-img"></a>
+      <a href="profile.html"><img src="download.png" alt="Profile" class="icon-img"></a>
+    </div>
+  </header>
+
+  <a href="#" class="back-link">&lt; Back</a>
+
+  <div class="container">
+    <div class="product-area">
+      <img src="stiker.jpg" alt="Product" />
+      <div class="button-group">
+        <button class="add-btn" onclick="addToCart()">Add To Cart</button>
+        <button class="buy-btn">+ Buy</button>
+      </div>
+    </div>
+
+    <div class="info-area">
+      <h2>Cute Stiker</h2>
+      <p class="desc">Cute Stiker 4pcs</p>
+      <div class="price">Rp5.000/4pcs</div>
+      <hr />
+      <h3>Product Information</h3>
+      <p class="info">
+        This sticker is made from high-quality vinyl material that's waterproof & doesn’t fade easily.
+        Perfect for sticking on your laptop, phone, binder, or anything you love to make it look cooler.
+      </p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">Order added to cart!</div>
+
+  <script>
+    function addToCart() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
