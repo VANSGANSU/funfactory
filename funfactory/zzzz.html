@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Fun Factory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        :root {
+            --primary-color: #4a90e2;       /* Biru cerah */
+            --secondary-color: #50e3c2;     /* Tosca segar */
+            --background-color: #e6f7ff;    /* Biru sangat muda */
+            --card-background: #ffffff;     /* Putih bersih */
+            --text-color: #333333;          /* Abu gelap */
+            --light-text: #7f8c8d;          /* Abu netral */
+            --border-color: #d1d8e0;        /* Abu muda */
+            --hover-bg: #d0f0fd;            /* Biru muda hover */
+            --shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            --btn-bg: #4a90e2;              /* Biru cerah */
+            --btn-hover-bg: #357ABD;        /* Biru gelap */
+        }
+
+        /* Reset & base */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'abalone smile', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--card-background);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            user-select: none;
+            font-weight: 700;
+        }
+
+        header p.subtitle {
+            font-style: italic;
+            color: var(--light-text);
+            font-size: 1.2rem;
+        }
+
+        /* Menu grid */
+        .menu-section {
+            margin-bottom: 50px;
+        }
+
+        .menu-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 5px;
+            user-select: none;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: var(--secondary-color);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(74, 144, 226, 0.5);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-content {
+            padding: 15px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-content h3 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            user-select: none;
+        }
+
+        .menu-content p.description {
+            flex-grow: 1;
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .menu-content p.price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2a5d6e; /* Biru gelap */
+            margin-bottom: 15px;
+            user-select: none;
+        }
+
+        .btn-order {
+            background-color: var(--btn-bg);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-order:hover {
+            background-color: var(--btn-hover-bg);
+            transform: scale(1.05);
+        }
+
+        /* Responsive text */
+        p, li, dd, dt {
+            font-size: 1rem;
+        }
+
+        /* List styles */
+        ul, ol, dl {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li, dd {
+            margin-bottom: 5px;
+            color: var(--light-text);
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        li:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: var(--card-background);
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        table:hover {
+            transform: translateY(-5px);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--card-background);
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #d0f0fd;
+        }
+
+        tr:hover {
+            background-color: var(--hover-bg);
+            cursor: pointer;
+        }
+
+        /* Audio Player & Link Styles */
+        audio {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px 0;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        audio:hover {
+            box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #2a5d6e;
+            text-decoration: underline;
+        }
+
+        .audio-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            color: var(--light-text);
+        }
+
+        /* Image Gallery Styles */
+        .image-gallery {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .image-card {
+            background-color: var(--hover-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(74, 144, 226, 0.5);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-card p {
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--light-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WELCOME TO FUN FACTORY</h1>
+            <p class="subtitle">Stop Dreaming Start Doing</p>
+        </header>
+
+        <section class="menu-section">
+            <h2>Product</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="download.jpg" alt="Sticker" />
+                    <div class="menu-content">
+                        <h3>Sticker</h3>
+                        <p class="description">Cute Sticker for Child to play</p>
+                        <p class="price">Rp5.000</p>
+                        <button class="btn-order"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="download (1).jpg" alt="Keychain" />
+                    <div class="menu-content">
+                        <h3>Keychain</h3>
+                        <p class="description">A keychain made with good material and charming appearance</p>
+                        <p class="price">Rp12.000</p>
+                        <button class="btn-order"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="images.jpg" alt="Guide Book" />
+                    <div class="menu-content">
+                        <h3>Guide Book</h3>
+                        <p class="description">1</p>
+                        <p class="price">Rp13.000</p>
+                        <button class="btn-order"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="download (3).jpg" alt="Miniboard Game" />
+                    <div class="menu-content">
+                        <h3>Miniboard Game</h3>
+                        <p class="description">An Interesting Boardgame to Train Cognitive and Educational Skills</p>
+                        <p class="price">Rp20.000</p>
+                        <button class="btn-order"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Galeri Foto</h2>
+            <div class="image-gallery">
+                <div class="image-card">
+                    <img src="download.jpg" alt="Sticker" />
+                    <p>Sticker</p>
+                </div>
+                <div class="image-card">
+                    <img src="download (1).jpg" alt="Keychain" />
+                    <p>Keychain</p>
+                </div>
+                <div class="image-card">
+                    <img src="images.jpg" alt="Guide Book" />
+                    <p>Guide Book</p>
+                </div>
+                <div class="image-card">
+                    <img src="download (2).jpg" alt="Miniboard Game" />
+                    <p>Miniboard Game</p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section>
+            <h2>Kontak & Informasi Pemesanan</h2>
+            <ul>
+                <li><strong>Alamat:</strong>Jl Dempo Sumberpucung</li>
+                <li><strong>Telepon:</strong> <a href="tel:+62 821-3118-3252">+62 821-3118-3252</a></li>
+                <li><strong>Email:</strong> <a href="mailto:funfactorycorporate@gmail.com">funfactorycorporate@gmail.com</a></li>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/funfactoryvans/" target="_blank" rel="noopener noreferrer">@funfactoryvans</a></li>
+                <li><strong>Jam Operasional:</strong> 09.00 - 21.00 WIB (Setiap Hari)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Metode Pembayaran</h2>
+            <ul>
+                <li><i class="fas fa-money-bill-wave"></i> Tunai (Cash)</li>
+                <li><i class="fas fa-mobile-alt"></i> QRIS (DANA / OVO / Gopay / ShopeePay)</li>
+                <li><i class="fas fa-credit-card"></i> Transfer Bank (BCA / BRI / Mandiri)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

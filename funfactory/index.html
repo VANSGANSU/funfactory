@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Fun Factory</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <img class="gambar" src="img/losgo.png" alt="Logo Website">
+    <h1>Login</h1>
+
+    <!-- FORM LOGIN HARUS SUBMIT KE login.php -->
+    <form id="loginForm" action="login.php" method="POST">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <div class="forgot-password">
+            <a id="forgotPasswordLink" href="#">Lupa Kata Sandi?</a>
+        </div>
+
+        <button type="submit" id="loginButton">Login</button>
+    </form>
+</div>
+
+<!-- Popup Loading -->
+<div class="loading-popup" id="loadingPopup">
+    <div class="dots-loader"><span></span><span></span><span></span></div>
+</div>
+
+<script src="java/jawa.js"></script>
+</body>
+</html>

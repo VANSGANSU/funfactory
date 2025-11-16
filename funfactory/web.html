@@ -1,0 +1,113 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Fun Factory</title>
+    <link rel="stylesheet" href="css/gaya.css">
+</head>
+<body>
+    <?php session_start(); ?>
+<?php session_start(); ?>
+<nav class="navbar">
+  <ul>
+    <li><a href="web.php">Home</a></li>
+    <li><a href="keranjang.php">Keranjang</a></li>
+
+    <?php if(isset($_SESSION['email'])): ?>
+      <li><a href="logout.php">Logout</a></li>
+    <?php else: ?>
+      <li><a href="login.html">Login</a></li>
+    <?php endif; ?>
+  </ul>
+</nav>
+
+
+    <div class="container">
+        <header>
+            <h1>WELCOME TO FUN FACTORY</h1>
+            <p class="subtitle">Stop Dreaming Start Doing</p>
+        </header>
+
+        <section class="menu-section">
+            <h2>Product</h2>
+            <div class="menu-grid">
+
+                <!-- Produk 1 -->
+                <div class="menu-card">
+                    <img src="download.jpg" alt="Stiker">
+                    <div class="menu-content">
+                        <h3>Sticker</h3>
+                        <p class="description">Cute Stiker for Child to play</p>
+                        <p class="price">Rp5.000</p>
+                <form action="keranjang.php" method="POST">
+                    <input type="hidden" name="produk" value="Sticker">
+                    <input type="hidden" name="harga" value="5000">
+                    <button type="submit" class="btn-order">Tambah ke Keranjang</button>
+                </form>
+
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="menu-card">
+                    <img src="download (1).jpg" alt="Keychain">
+                    <div class="menu-content">
+                        <h3>Keychain</h3>
+                        <p class="description">A keychain made with good material and charming appearance</p>
+                        <p class="price">Rp12.000</p>
+                    <form action="keranjang.php" method="POST">
+                        <input type="hidden" name="produk" value="Keychain">
+                        <input type="hidden" name="harga" value="12000">
+                        <button type="submit" class="btn-order">Tambah ke Keranjang</button>
+                    </form>
+
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="menu-card">
+                    <img src="images.jpg" alt="Guide Book">
+                    <div class="menu-content">
+                        <h3>Guide Book</h3>
+                        <p class="description">A Guide and Explanation of The Basic and Fundamentals of MySQL shortcuts for beginners</p>
+                        <p class="price">Rp13.000</p>
+                            <form action="keranjang.php" method="POST">
+                                <input type="hidden" name="produk" value="Guide Book">
+                                <input type="hidden" name="harga" value="13000">
+                                <button type="submit" class="btn-order">Tambah ke Keranjang</button>
+                            </form>
+                    </div>
+                </div>
+
+                <!-- Produk 4 -->
+                <div class="menu-card">
+                    <img src="download (3).jpg" alt="Miniboard Game">
+                    <div class="menu-content">
+                        <h3>Miniboard Game</h3>
+                        <p class="description">An Interesting Boardgame to Train Cognitive and Educational Skills</p>
+                        <p class="price">Rp20.000</p>
+                        <form action="keranjang.php" method="POST">
+                            <input type="hidden" name="produk" value="Miniboard Game">
+                            <input type="hidden" name="harga" value="20000">
+                            <button type="submit" class="btn-order">Tambah ke Keranjang</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>Kontak & Informasi Pemesanan</h2>
+            <ul>
+                <li><strong>Alamat:</strong> Jl. Raya Madura No. 88, Bangkalan</li>
+                <li><strong>Telepon:</strong> <a href="tel:+62895405700707">+62 895-4057-00707</a></li>
+                <li><strong>Email:</strong> <a href="mailto:funfactorycorporate@gmail.com">funfactorycorporate@gmail.com</a></li>
+                <li><strong>Instagram:</strong> <a href="https://instagram.com/funfactoryvans" target="_blank">@funfactoryvans</a></li>
+                <li><strong>Jam Operasional:</strong> 09.00 - 21.00 WIB (Setiap Hari)</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

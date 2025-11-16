@@ -1,0 +1,27 @@
+<div class="loading-popup" id="loadingPopup">
+  <div class="dual-ring"></div>
+</div>
+
+<style>
+.dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+.dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #3498db;
+  border-color: #3498db transparent #3498db transparent;
+  animation: dual-ring-spin 1.2s linear infinite;
+}
+
+@keyframes dual-ring-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Kata Sandi</title>
+    <link rel="stylesheet" href="css/style.css">  <!-- Gunakan CSS yang sama untuk konsistensi -->
+</head>
+<body>
+    <div class="login-container">
+        <!-- Logo Utama -->
+        <img src="img/logo-removebg-preview.png" alt="Logo Website">
+        
+        <!-- Judul Halaman -->
+        <h1></h1>
+        
+        <!-- Form Lupa Kata Sandi -->
+        <form id="forgotForm" action="#" method="post">
+            <input type="email" name="email" placeholder="Masukkan Email Anda" required>
+            
+            <button type="submit" id="forgotButton">Kirim Kode</button>
+        </form>
+        
+        <!-- Link Kembali ke Login -->
+        <div class="forgot-password">
+            <a href="login.html">Kembali ke Halaman Login</a>
+        </div>
+    </div>
+
+    <!-- Loading Popup -->
+    <div class="loading-popup" id="loadingPopup">
+        <div class="dots-loader">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+    <script src="java/jawa.js"></script>
+</body>
+</html>

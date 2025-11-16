@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Login</title>
+  <style>
+    /* Gaya Umum */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .login-container img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .login-container h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .forgot-password {
+      margin: 0.5rem 0 1rem;
+      text-align: right;
+    }
+
+    .forgot-password a {
+      font-size: 0.9rem;
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .social-login {
+      margin-top: 1.5rem;
+    }
+
+    .social-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+      color: #333;
+      background-color: #fafafa;
+    }
+
+    .social-button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Popup loading overlay */
+    .loading-popup {
+      display: none; /* hidden by default */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    /* Animasi loading titik */
+    .dots-loader {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dots-loader span {
+      width: 12px;
+      height: 12px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      animation: bounce 1s infinite ease-in-out;
+    }
+
+    .dots-loader span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .dots-loader span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <!-- Logo -->
+    <img src="/img/logo-removebg-preview.png" alt="Logo Website">
+
+    <!-- Judul -->
+    <h1>Login</h1>
+
+    <!-- Form Login -->
+    <form id="loginForm" action="#" method="post">
+      <input type="text" name="username" placeholder="Username atau Email" required />
+      <input type="password" name="password" placeholder="Password" required />
+
+      <div class="forgot-password">
+        <a id="forgotPasswordLink" href="#">Lupa Kata Sandi?</a>
+      </div>
+
+      <button type="submit" id="loginButton">Login</button>
+    </form>
+
+    <!-- Login Sosial -->
+    <div class="social-login">
+      <a href="#" class="social-button">
+        <img src="img/google-logo.png" alt="Google Logo">
+        Sign in with Google
+      </a>
+      <a href="#" class="social-button">
+        <img src="img/facebook-logo.png" alt="Facebook Logo">
+        Sign in with Facebook
+      </a>
+    </div>
+  </div>
+
+  <!-- Popup Loading -->
+  <div class="loading-popup" id="loadingPopup">
+    <div class="dots-loader">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginForm = document.getElementById('loginForm');
+      const loginButton = document.getElementById('loginButton');
+      const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+      const loadingPopup = document.getElementById('loadingPopup');
+
+      if (loginButton) {
+        loginButton.addEventListener('click', function (event) {
+          event.preventDefault(); // Cegah form submit langsung
+
+          if (loginForm) {
+            loginForm.classList.add('animating');
+            if (loadingPopup) loadingPopup.style.display = 'flex'; // Tampilkan animasi loading
+
+            // Simulasi proses login
+            setTimeout(() => {
+              if (loadingPopup) loadingPopup.style.display = 'none'; // Sembunyikan loading
+              loginForm.classList.remove('animating');
+              window.location.href = 'web.html'; // Redirect ke halaman utama
+            }, 1500); // Waktu loading: 1.5 detik
+          }
+        });
+      }
+
+      // Lupa Kata Sandi
+      if (forgotPasswordLink) {
+        forgotPasswordLink.addEventListener('click', function (event) {
+          event.preventDefault();
+          alert('Anda akan diarahkan ke halaman Lupa Kata Sandi...');
+          // window.location.href = 'forgot.html'; // Uncomment jika ada
+        });
+      }
+    });
+  </script>
+</body>
+</html>
